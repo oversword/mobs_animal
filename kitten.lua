@@ -106,23 +106,21 @@ stepheight = 1.1,
 })
 
 
-local spawn_on = "default:dirt_with_grass"
-
-if minetest.get_modpath("ethereal") then
-	spawn_on = "ethereal:grove_dirt"
-end
-
+if global_mobs_animal.spawn_enabled_kitten then
 mobs:spawn({
 	name = "mobs_animal:kitten",
-	nodes = {spawn_on},
-	neighbors = {"group:grass"},
-	min_light = 14,
-	interval = 60,
-	chance = 10000, -- 22000
-	min_height = 5,
-	max_height = 50,
+	nodes = global_mobs_animal.spawn_on_kitten,
+	neighbors = global_mobs_animal.spawn_near_kitten,
+	min_light = global_mobs_animal.spawn_min_light_kitten,
+	max_light = global_mobs_animal.spawn_max_light_kitten,
+	interval = global_mobs_animal.spawn_interval_kitten,
+	chance = global_mobs_animal.spawn_chance_kitten,
+	active_object_count = global_mobs_animal.spawn_active_object_count_kitten,
+	min_height = global_mobs_animal.spawn_min_height_kitten,
+	max_height = global_mobs_animal.spawn_max_height_kitten,
 	day_toggle = true,
 })
+end
 
 
 mobs:register_egg("mobs_animal:kitten", S("Kitten"), "mobs_kitten_inv.png", 0)

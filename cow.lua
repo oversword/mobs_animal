@@ -1,7 +1,6 @@
 
 local S = mobs.intllib
 
-
 -- Cow by sirrobzeroone
 
 mobs:register_mob("mobs_animal:cow", {
@@ -130,17 +129,21 @@ mobs:register_mob("mobs_animal:cow", {
 })
 
 
+if global_mobs_animal.spawn_enabled_cow then
 mobs:spawn({
 	name = "mobs_animal:cow",
-	nodes = {"default:dirt_with_grass", "ethereal:green_dirt"},
-	neighbors = {"group:grass"},
-	min_light = 14,
-	interval = 60,
-	chance = 8000, -- 15000
-	min_height = 5,
-	max_height = 200,
+	nodes = global_mobs_animal.spawn_on_cow,
+	neighbors = global_mobs_animal.spawn_near_cow,
+	min_light = global_mobs_animal.spawn_min_light_cow,
+	max_light = global_mobs_animal.spawn_max_light_cow,
+	interval = global_mobs_animal.spawn_interval_cow,
+	chance = global_mobs_animal.spawn_chance_cow,
+	active_object_count = global_mobs_animal.spawn_active_object_count_cow,
+	min_height = global_mobs_animal.spawn_min_height_cow,
+	max_height = global_mobs_animal.spawn_max_height_cow,
 	day_toggle = true,
 })
+end
 
 
 mobs:register_egg("mobs_animal:cow", S("Cow"), "mobs_cow_inv.png")

@@ -1,7 +1,6 @@
 
 local S = mobs.intllib
 
-
 -- Warthog originally by KrupnoPavel, B3D model by sirrobzeroone
 
 mobs:register_mob("mobs_animal:pumba", {
@@ -59,30 +58,21 @@ mobs:register_mob("mobs_animal:pumba", {
 	end,
 })
 
-local spawn_on = {"default:dirt_with_grass"}
-local spawn_by = {"group:grass"}
-
-if minetest.get_mapgen_setting("mg_name") ~= "v6" then
-	spawn_on = {"default:dirt_with_dry_grass"}
-	spawn_by = {"group:dry_grass"}
-end
-
-if minetest.get_modpath("ethereal") then
-	spawn_on = {"ethereal:mushroom_dirt"}
-	spawn_by = {"flowers:mushroom_brown", "flowers:mushroom_brown"}
-end
-
+if global_mobs_animal.spawn_enabled_warthog then
 mobs:spawn({
 	name = "mobs_animal:pumba",
-	nodes = spawn_on,
-	neighbors = spawn_by,
-	min_light = 14,
-	interval = 60,
-	chance = 8000, -- 15000
-	min_height = 0,
-	max_height = 200,
+	nodes = global_mobs_animal.spawn_on_warthog,
+	neighbors = global_mobs_animal.spawn_near_warthog,
+	min_light = global_mobs_animal.spawn_min_light_warthog,
+	max_light = global_mobs_animal.spawn_max_light_warthog,
+	interval = global_mobs_animal.spawn_interval_warthog,
+	chance = global_mobs_animal.spawn_chance_warthog,
+	active_object_count = global_mobs_animal.spawn_active_object_count_warthog,
+	min_height = global_mobs_animal.spawn_min_height_warthog,
+	max_height = global_mobs_animal.spawn_max_height_warthog,
 	day_toggle = true,
 })
+end
 
 
 mobs:register_egg("mobs_animal:pumba", S("Warthog"), "mobs_pumba_inv.png")

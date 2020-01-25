@@ -1,7 +1,6 @@
 
 local S = mobs.intllib
 
-
 -- Bunny by ExeterDad
 
 mobs:register_mob("mobs_animal:bunny", {
@@ -107,23 +106,21 @@ stepheight = 0.6,
 })
 
 
-local spawn_on = "default:dirt_with_grass"
-
-if minetest.get_modpath("ethereal") then
-	spawn_on = "ethereal:prairie_dirt"
-end
-
+if global_mobs_animal.spawn_enabled_bunny then
 mobs:spawn({
 	name = "mobs_animal:bunny",
-	nodes = {spawn_on},
-	neighbors = {"group:grass"},
-	min_light = 14,
-	interval = 60,
-	chance = 8000, -- 15000
-	min_height = 5,
-	max_height = 200,
+	nodes = global_mobs_animal.spawn_on_bunny,
+	neighbors = global_mobs_animal.spawn_near_bunny,
+	min_light = global_mobs_animal.spawn_min_light_bunny,
+	max_light = global_mobs_animal.spawn_max_light_bunny,
+	interval = global_mobs_animal.spawn_interval_bunny,
+	chance = global_mobs_animal.spawn_chance_bunny,
+	active_object_count = global_mobs_animal.spawn_active_object_count_bunny,
+	min_height = global_mobs_animal.spawn_min_height_bunny,
+	max_height = global_mobs_animal.spawn_max_height_bunny,
 	day_toggle = true,
 })
+end
 
 
 mobs:register_egg("mobs_animal:bunny", S("Bunny"), "mobs_bunny_inv.png", 0)

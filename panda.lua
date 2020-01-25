@@ -1,7 +1,6 @@
 
 local S = mobs.intllib
 
-
 -- Panda by AspireMint (CC BY-SA 3.0)
 
 mobs:register_mob("mobs_animal:panda", {
@@ -68,19 +67,19 @@ stepheight = 0.6,
 	end,
 })
 
-if minetest.get_modpath("ethereal") then
-
-	mobs:spawn({
-		name = "mobs_animal:panda",
-		nodes = {"ethereal:bamboo_dirt"},
-		neighbors = {"group:grass"},
-		min_light = 14,
-		interval = 60,
-		chance = 8000, -- 15000
-		min_height = 10,
-		max_height = 80,
-		day_toggle = true,
-	})
+if global_mobs_animal.spawn_enabled_panda then
+mobs:spawn({
+    name = "mobs_animal:panda",
+    nodes = global_mobs_animal.spawn_on_panda,
+    neighbors = global_mobs_animal.spawn_near_panda,
+    min_light = global_mobs_animal.spawn_min_light_panda,
+    interval = global_mobs_animal.spawn_interval_panda,
+    chance = global_mobs_animal.spawn_chance_panda,
+		active_object_count = global_mobs_animal.spawn_active_object_count_panda,
+    min_height = global_mobs_animal.spawn_min_height_panda,
+    max_height = global_mobs_animal.spawn_max_height_panda,
+    day_toggle = true,
+})
 end
 
 mobs:register_egg("mobs_animal:panda", S("Panda"), "mobs_panda_inv.png")

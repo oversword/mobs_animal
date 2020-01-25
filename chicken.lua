@@ -1,7 +1,6 @@
 
 local S = mobs.intllib
 
-
 -- Chicken by JK Murray and Sirrobzeroone
 
 mobs:register_mob("mobs_animal:chicken", {
@@ -91,23 +90,21 @@ stepheight = 0.6,
 })
 
 
-local spawn_on = "default:dirt_with_grass"
-
-if minetest.get_modpath("ethereal") then
-	spawn_on = "ethereal:bamboo_dirt"
-end
-
+if global_mobs_animal.spawn_enabled_chicken then
 mobs:spawn({
 	name = "mobs_animal:chicken",
-	nodes = {spawn_on},
-	neighbors = {"group:grass"},
-	min_light = 14,
-	interval = 60,
-	chance = 8000, -- 15000
-	min_height = 5,
-	max_height = 200,
+	nodes = global_mobs_animal.spawn_on_chicken,
+	neighbors = global_mobs_animal.spawn_near_chicken,
+	min_light = global_mobs_animal.spawn_min_light_chicken,
+	max_light = global_mobs_animal.spawn_max_light_chicken,
+	interval = global_mobs_animal.spawn_interval_chicken,
+	chance = global_mobs_animal.spawn_chance_chicken,
+	active_object_count = global_mobs_animal.spawn_active_object_count_chicken,
+	min_height = global_mobs_animal.spawn_min_height_chicken,
+	max_height = global_mobs_animal.spawn_max_height_chicken,
 	day_toggle = true,
 })
+end
 
 
 mobs:register_egg("mobs_animal:chicken", S("Chicken"), "mobs_chicken_inv.png", 0)

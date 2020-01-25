@@ -204,17 +204,21 @@ mobs:register_egg("mobs_animal:sheep_"..col[1], S("@1 Sheep", col[2]), "wool_"..
 end
 
 
+if global_mobs_animal.spawn_enabled_sheep then
 mobs:spawn({
 	name = "mobs_animal:sheep_white",
-	nodes = {"default:dirt_with_grass", "ethereal:green_dirt"},
-	neighbors = {"group:grass"},
-	min_light = 14,
-	interval = 60,
-	chance = 8000, -- 15000
-	min_height = 0,
-	max_height = 200,
+	nodes = global_mobs_animal.spawn_on_sheep,
+	neighbors = global_mobs_animal.spawn_near_sheep,
+	min_light = global_mobs_animal.spawn_min_light_sheep,
+	max_light = global_mobs_animal.spawn_max_light_sheep,
+	interval = global_mobs_animal.spawn_interval_sheep,
+	chance = global_mobs_animal.spawn_chance_sheep,
+	active_object_count = global_mobs_animal.spawn_active_object_count_sheep,
+	min_height = global_mobs_animal.spawn_min_height_sheep,
+	max_height = global_mobs_animal.spawn_max_height_sheep,
 	day_toggle = true,
 })
+end
 
 
 mobs:alias_mob("mobs:sheep", "mobs_animal:sheep_white") -- compatibility

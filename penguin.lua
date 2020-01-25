@@ -1,7 +1,6 @@
 
 local S = mobs.intllib
 
-
 -- Penguin by D00Med
 
 mobs:register_mob("mobs_animal:penguin", {
@@ -61,16 +60,21 @@ stepheight = 0.6,
 })
 
 
+if global_mobs_animal.spawn_enabled_penguin then
 mobs:spawn({
 	name = "mobs_animal:penguin",
-	nodes = {"default:snowblock"},
-	min_light = 14,
-	interval = 60,
-	chance = 20000,
-	min_height = 0,
-	max_height = 200,
+	nodes = global_mobs_animal.spawn_on_penguin,
+	neighbors = global_mobs_animal.spawn_near_penguin,
+	min_light = global_mobs_animal.spawn_min_light_penguin,
+	max_light = global_mobs_animal.spawn_max_light_penguin,
+	interval = global_mobs_animal.spawn_interval_penguin,
+	chance = global_mobs_animal.spawn_chance_penguin,
+	active_object_count = global_mobs_animal.spawn_active_object_count_penguin,
+	min_height = global_mobs_animal.spawn_min_height_penguin,
+	max_height = global_mobs_animal.spawn_max_height_penguin,
 	day_toggle = true,
 })
+end
 
 
 mobs:register_egg("mobs_animal:penguin", S("Penguin"), "mobs_penguin_inv.png")

@@ -46,16 +46,21 @@ mobs:register_mob("mobs_animal:bee", {
 --	end,
 })
 
+if global_mobs_animal.spawn_enabled_bee then
 mobs:spawn({
 	name = "mobs_animal:bee",
-	nodes = {"group:flower"},
-	min_light = 14,
-	interval = 60,
-	chance = 7000,
-	min_height = 3,
-	max_height = 200,
+	nodes = global_mobs_animal.spawn_on_bee,
+	neighbors = global_mobs_animal.spawn_near_bee,
+	min_light = global_mobs_animal.spawn_min_light_bee,
+	max_light = global_mobs_animal.spawn_max_light_bee,
+	interval = global_mobs_animal.spawn_interval_bee,
+	chance = global_mobs_animal.spawn_chance_bee,
+	active_object_count = global_mobs_animal.spawn_active_object_count_bee,
+	min_height = global_mobs_animal.spawn_min_height_bee,
+	max_height = global_mobs_animal.spawn_max_height_bee,
 	day_toggle = true,
 })
+end
 
 mobs:register_egg("mobs_animal:bee", S("Bee"), "mobs_bee_inv.png")
 

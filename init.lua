@@ -6,6 +6,8 @@ local MP = minetest.get_modpath(minetest.get_current_modname())
 local S, NS = dofile(MP.."/intllib.lua")
 mobs.intllib = S
 
+dofile(path .. "/config.lua") -- Oversword
+
 -- Animals
 
 dofile(path .. "/chicken.lua") -- JKmurray

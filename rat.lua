@@ -1,7 +1,6 @@
 
 local S = mobs.intllib
 
-
 -- Rat by PilzAdam (B3D model by sirrobzeroone)
 
 mobs:register_mob("mobs_animal:rat", {
@@ -67,16 +66,21 @@ local function rat_spawn(self, pos)
 	self.health = 100
 end
 
+if global_mobs_animal.spawn_enabled_rat then
 mobs:spawn({
 	name = "mobs_animal:rat",
-	nodes = {"default:stone"},
-	min_light = 3,
-	max_light = 9,
-	interval = 60,
-	chance = 8000,
-	max_height = 0,
+	nodes = global_mobs_animal.spawn_on_rat,
+	neighbors = global_mobs_animal.spawn_near_rat,
+	min_light = global_mobs_animal.spawn_min_light_rat,
+	max_light = global_mobs_animal.spawn_max_light_rat,
+	interval = global_mobs_animal.spawn_interval_rat,
+	chance = global_mobs_animal.spawn_chance_rat,
+	active_object_count = global_mobs_animal.spawn_active_object_count_rat,
+	max_height = global_mobs_animal.spawn_max_height_rat,
+	min_height = global_mobs_animal.spawn_min_height_rat,
 --	on_spawn = rat_spawn,
 })
+end
 
 
 mobs:register_egg("mobs_animal:rat", S("Rat"), "mobs_rat_inv.png")
